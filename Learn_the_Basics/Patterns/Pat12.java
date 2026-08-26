@@ -18,8 +18,12 @@ public class Pat12 {
             for (int j=i+1; j<=x-i; j++){
                 System.out.print(" ");
             }
-            for (int j =x-i+1; j<=x; j++){
-                System.out.print(x-j+1);
+            // for (int j =x-i+1; j<=x; j++){
+            //     System.out.print(x-j+1);
+            // }
+
+            for (int j=i; j>=1; j--){
+                System.out.print(j);
             }
             System.out.println();
             
