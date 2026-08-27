@@ -1,4 +1,5 @@
 *.class
+*.exe
 target/
 bin/
 out/
