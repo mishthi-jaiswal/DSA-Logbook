@@ -59,7 +59,25 @@ int main(){
 
     cout<<cnt1<<" "<<cnt2<<endl;
 
-    //
+    //printing the permutations of a string
+    string s="123";
+    do{
+        cout<<s<<endl;
+    }while(next_permutation(s.begin(),s.end()));
+    cout<<"Next Permutation Example"<<endl;
+
+    string s2="213"; //foloows the dictionary order
+    // sort(s2.begin(), s2.end()); //that is why sort the string before permutations
+    do{
+        cout<<s2<<endl;
+    }while(next_permutation(s2.begin(),s2.end()));
+
+    //max and min element
+    int k[]={4,5,11,41,56,18}; int l= sizeof(k)/sizeof(k[0]);
+    int maxi=*max_element(k,k+l); 
+    int mini=*min_element(k,k+l);
+    cout<<"MAX :"<<maxi<<" "<<"MIN : "<<mini<<endl;
+
 
     
 
