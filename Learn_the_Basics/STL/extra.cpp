@@ -38,6 +38,8 @@ int main(){
     sort(v.begin(), v.end(), greater<int>()); //sort a vector DESC order
 
 
+
+
     //sort in my OWN WAY : using self written comparator
     //Question: sort according to 2nd element of pairs (DESC) and if 2nd element are SAME , then sort according to 1st element of pair(ASCENDING order)
     pair<int, int> b[]={{11,9},{8,9},{7,3},{10,4},{4,7}};
@@ -48,6 +50,16 @@ int main(){
         cout<<"{"<<i.first<<","<<i.second<<"},";
     }
     cout<<endl;
+
+    //Counting the no of set bits in binary representation of a number
+    int num= 9; //binary = 1001
+    int cnt1= __builtin_popcount(num);
+    long long lnum= 13247285873458;
+    int cnt2=__builtin_popcount(lnum);
+
+    cout<<cnt1<<" "<<cnt2<<endl;
+
+    //
 
     
 
