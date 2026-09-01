@@ -13,5 +13,7 @@ int main(){
     cin>>n;
 
     print_name(1,n);//learning change of parameters
+
+    //time complexity : O(n)
     return 0;
 }
