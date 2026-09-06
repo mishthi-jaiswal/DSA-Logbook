@@ -4,32 +4,42 @@ using namespace std;
 
 void bubble_sort_asc(int a[], int n){
     for (int i=n-1; i>0;i--){
+        int did_swap=0;
         for (int j=0; j<i; j++){
             if (a[j]>a[j+1]){
                 // swap(a[j], a[j+1]);
                 int temp = a[j];
                 a[j]=a[j+1];
                 a[j+1]=temp;
+                did_swap=1;
             }
+        }
+        if (did_swap==0) {
+            break;
         }
     }
 
 }
-
-
 void bubble_sort_desc(int a[], int n){
     for (int i=n-1; i>0;i--){
+        int did_swap=0;
         for (int j=0; j<i; j++){
             if (a[j]<a[j+1]){
                 // swap(a[j], a[j+1]);
                 int temp = a[j];
                 a[j]=a[j+1];
                 a[j+1]=temp;
+                did_swap=1;
             }
+        }
+        if (did_swap==0) {
+            break;
         }
     }
 
 }
+
+
 
 
 
@@ -44,8 +54,8 @@ int main(){
     }
 
     //sort
-    // bubble_sort_asc(a,n);
-    bubble_sort_desc(a,n);
+    bubble_sort_asc(a,n);
+    // bubble_sort_desc(a,n);
 
     //print array
     for (auto it : a){
@@ -53,5 +63,6 @@ int main(){
     }
     return 0;
 }
-
-//TIME COMP: O(n^2)
+//TIME COMP:
+//Normal bubble sort :O(n^2) (without did_swap)
+//Optimized bubble sort: O(n) 
