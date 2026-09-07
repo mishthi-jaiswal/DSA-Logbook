@@ -16,20 +16,19 @@ void insertion_sort_asc(int a[], int n){
 }
 
 void insertion_sort_desc(int a[], int n){
-    for (int i=0; i<n-1;i++){
-        int max_index=i;
-        for (int j=i; j<n; j++){
-            if (a[j]>a[max_index]){ //only this condition changes
-                max_index=j;
-            }
+    for (int i=n-1; i>=0;i--){
+        int c_index=i;
+
+        while(a[c_index]>a[c_index-1] && c_index<n){
+            swap(a[c_index],a[c_index-1]);
+            c_index=c_index+1;
         }
-        // swap(a[i], a[min_index]);
-        int temp = a[i];
-        a[i]=a[max_index];
-        a[max_index]=temp;
+        
     }
 
 }
+
+
 
 int main(){
     int n;
@@ -42,8 +41,8 @@ int main(){
     }
 
     //sort
-    insertion_sort_asc(a,n);
-    // insertion_sort_desc(a,n);
+    // insertion_sort_asc(a,n);
+    insertion_sort_desc(a,n);
 
     //print array
     for (auto it : a){
