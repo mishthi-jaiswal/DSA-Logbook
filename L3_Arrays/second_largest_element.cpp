@@ -61,20 +61,37 @@ int main(){
 
 
     //BETTER SOLUTION : 2 LOOPS ; TIME: O(2N)
-    int largest=a[0];
+    // int largest=a[0];
+    // for (int i=0; i<n; i++){
+    //     if (a[i]>largest){
+    //         largest=a[i];
+    //     }
+    // }
+
+    // int second_largest=INT_MIN;
+    // for (int i=0; i<n; i++){
+    //     if(a[i]<largest && a[i]>second_largest){
+    //         second_largest=a[i];
+    //     }
+    // }
+    // cout<<"Second Largest : "<<second_largest;
+
+
+    //OPTIMAL SOLUTION ; TIME = O(N)
+    int largest= a[0];
+    int second_largest = INT_MIN;
+
     for (int i=0; i<n; i++){
         if (a[i]>largest){
+            second_largest=largest;
             largest=a[i];
         }
-    }
-
-    int second_largest=INT_MIN;
-    for (int i=0; i<n; i++){
-        if(a[i]<largest && a[i]>second_largest){
+        else if (a[i]<largest && a[i]>second_largest){
             second_largest=a[i];
         }
     }
-    cout<<"Second Largest : "<<second_largest;
+    cout<<"Second largest : "<<second_largest;
+
 
 
     return 0;
