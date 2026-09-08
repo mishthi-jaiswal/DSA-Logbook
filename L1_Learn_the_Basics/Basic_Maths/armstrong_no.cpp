@@ -20,7 +20,7 @@ int main(){
     int sum=0;
     int p;
     while(temp2>0){
-        digit=temp2%10;
+        digit=temp2 % 10;
         // sum+=pow(digit, count);//pow() gives float and storing it int causes some problem for no. 153 , so avoid using this
         p=digit;
         for (int i=1; i<count; i++){

@@ -51,6 +51,7 @@ int main(){
     }
     cout<<endl;
 
+
     //Counting the no of set bits in binary representation of a number
     int num= 9; //binary = 1001
     int cnt1= __builtin_popcount(num);
@@ -58,6 +59,8 @@ int main(){
     int cnt2=__builtin_popcount(lnum);
 
     cout<<cnt1<<" "<<cnt2<<endl;
+
+
 
     //printing the permutations of a string
     string s="123";
@@ -72,15 +75,13 @@ int main(){
         cout<<s2<<endl;
     }while(next_permutation(s2.begin(),s2.end()));
 
+
+    
     //max and min element
     int k[]={4,5,11,41,56,18}; int l= sizeof(k)/sizeof(k[0]);
     int maxi=*max_element(k,k+l); 
     int mini=*min_element(k,k+l);
     cout<<"MAX :"<<maxi<<" "<<"MIN : "<<mini<<endl;
-
-
-    
-
 
     return 0;
 }
