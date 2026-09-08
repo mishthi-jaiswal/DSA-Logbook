@@ -5,8 +5,8 @@ int partition(int a[], int low, int high){
     int i=low+1;
     int j=high;
 
-    //i crosses j when i>=j
-    while(i<j){
+    
+    while(i<=j){
         //write conditions in this order only ---1st check if j is out of bounds then access 
         while(i<=high && a[i]<=pivot){ //we are looking for an i that is GREATER THAN PIVOT , also i can go upto +infinity
             i++;
@@ -14,7 +14,7 @@ int partition(int a[], int low, int high){
         while(j>=low+1 && a[j]>pivot ){ //write conditions in this order only ---1st check if j is out of bounds then access 
             j--;
         }
-        if(i<j){
+        if(i<j){//i crosses j when i>=j
             swap(a[i], a[j]);
         }
     }
