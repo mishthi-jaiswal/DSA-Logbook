@@ -16,21 +16,33 @@ int main(){
 
     //REMOVE DUPLICATES FROM A SORTED ARRAY 
     //WORK: to modify the array and return no of unique elements
+    
+    //OPTIMAL APPROACH : TIME=O(N) SPACE=O(1) 
+    int i=0;
+  
+    for (int j=i+1; j<n; j++){
+        if (a[j]!=a[i]){
+            a[i+1]=a[j];
+            i++;
+        }
+
+    }
+    cout<<"No of unique elements :"<<i+1<<endl;
 
 
 
     //BRUTE FORCE: using set ; TIME=O(N log N) SPACE=O(N)
-    set <int> s;
-    for (auto it : a){
-        s.insert(it);
-    }
+    // set <int> s;
+    // for (auto it : a){
+    //     s.insert(it);
+    // }
 
-    int i=0;
-    for(auto it : s){
-        a[i]=it;
-        i++;
-    }
-    cout<<"No of unique elements :"<<i<<endl;
+    // int i=0;
+    // for(auto it : s){
+    //     a[i]=it;
+    //     i++;
+    // }
+    // cout<<"No of unique elements :"<<i<<endl;
 
 
     //print array
