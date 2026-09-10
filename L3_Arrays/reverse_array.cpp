@@ -39,7 +39,8 @@ int main(){
 
     //reverse 
     // f1(a,n);
-    f2(a,0,n-1);
+    // f2(a,0,n-1);
+    reverse(a, a+n);//METHOD 3: Using STL
 
     //print array
     for (auto it: a){
