@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//left rotate by D places
+
 int main(){
     //input array
     int n;
@@ -13,38 +15,56 @@ int main(){
     }
 
 
-    //left rotate by D places
-    
-
-    //STRIVER'S SOLUTION
-    //time: O(n +d) and space:O(d)
+    //OPTIMAL SOLUTION
     int d;
     cout<<"Enter the no : ";
     cin>>d;
     d=d%n;//Remember to handle d>n
 
-    vector<int> v(a, a+d);  //Time : O(d)
+    reverse(a,a+d);    //time =O(d)
+    reverse(a+d,a+n);  //time =O(n-d)
+    reverse(a,a+n);    //time =O(n)
+
+    //Overall time :O(2n)..... more than brute force 
+    //space: O(1)....that's a good thing
    
-
-    //filling the front positions
-    for (int i=d; i<n;i++){  //TIME : O(n-d)
-        a[i-d]=a[i];
-    }
-
-
-    //filing back positions
-    for (int i=n-d; i<n; i++){//Iime : O(d)
-        a[i]=v[i-(n-d)];
-    }
-
-    //overall Time=O(n+d)
-
-
 
 
 
 
     
+    
+
+    //BRUTE FORCE
+    //time: O(n +d) and space:O(d)
+    // int d;
+    // cout<<"Enter the no : ";
+    // cin>>d;
+    // d=d%n;//Remember to handle d>n
+
+    // vector<int> v(a, a+d);  //Time : O(d)
+   
+
+    // //filling the front positions
+    // for (int i=d; i<n;i++){  //TIME : O(n-d)
+    //     a[i-d]=a[i];
+    // }
+
+
+    // //filing back positions
+    // for (int i=n-d; i<n; i++){//Iime : O(d)
+    //     a[i]=v[i-(n-d)];
+    // }
+
+    // //overall Time=O(n+d)
+
+
+
+
+
+
+
+
 
     //MY SOLUTION
     // int d;
