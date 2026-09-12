@@ -28,6 +28,8 @@ int main(){
 
     cout<<"Majority element : "<<ans<<endl;
 
+    //time :O(n)
+    //space: O(n)
 
     return 0;
 }
