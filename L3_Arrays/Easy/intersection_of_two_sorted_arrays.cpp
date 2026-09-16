@@ -23,24 +23,51 @@ int main(){
         cin>>b[i];
     }
 
-    //BRUTE FORCE : UNIQUE INTERSECTION
-    vector<int> ans;
-    for (int i=0; i<n1; i++){
-        for (int j=0; j<n2; j++){
-            if (b[j]==a[i] ){
-                if(ans.size()==0){
-                    ans.push_back(a[i]);
-                    break;
-                }
-                else if(ans.back()!=a[i]){
-                    ans.push_back(a[i]);
-                    break;
-                }
-                
+    //OPTIMAL : UNIQUE INTERSECTION
+    int i=0;
+    int j=0;
+    vector <int> ans;
+
+    while(i<n1 && j<n2){
+        if(a[i]<b[j]){
+            i++;
+        }
+        else if(b[j]<a[i]){
+            j++;
+        }
+        else{
+            if(ans.size()==0){
+                ans.push_back(a[i]);
             }
-            
+            else if(ans.back()!=a[i]){
+                ans.push_back(a[i]);
+            }
+
+            i++; j++;
         }
     }
+    
+
+
+
+    //BRUTE FORCE : UNIQUE INTERSECTION
+    // vector<int> ans;
+    // for (int i=0; i<n1; i++){
+    //     for (int j=0; j<n2; j++){
+    //         if (b[j]==a[i] ){
+    //             if(ans.size()==0){
+    //                 ans.push_back(a[i]);
+    //                 break;
+    //             }
+    //             else if(ans.back()!=a[i]){
+    //                 ans.push_back(a[i]);
+    //                 break;
+    //             }
+                
+    //         }
+            
+    //     }
+    // }
 
     
 
