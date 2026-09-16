@@ -23,42 +23,54 @@ int main(){
         cin>>b[i];
     }
 
+    //OPTIMAL
+    //time: O(n1+n2)
+    //space : for solving =O(1) ; to return answer= O(k)....k is the intersection elements
+    vector <int> ans;
+
+    int i=0;
+    int j=0; 
+    while(i<n1 && j<n2){
+        if(a[i]<b[j]){
+            i++;
+        }
+        else if(b[j]<a[i]){
+            j++;
+        }
+        else{
+            ans.push_back(a[i]); //both are equal
+            i++;
+            j++;
+        }
+
+    }
+
+
+
     //BRUTE FORCE
     // int visited[n2]={0}; //not relaible ...some compilers may allow it
-    vector<int> visited(n2,0);//....all intialized to zeroes
+    // vector<int> visited(n2,0);//....all intialized to zeroes
 
-    vector<int> ans;
-    for (int i=0; i<n1; i++){
-        for (int j=0; j<n2; j++){
-            if (b[j]==a[i] && visited[j]==0){
-                ans.push_back(a[i]);
-                visited[j]=1;
-                break;
-            }
-            if(b[j]>a[i]){
-                break;
-            }
-        }
-    }
-    // int j=0;
-    // for (auto it : a){
-    //     if(v.size()==0 || v.back()!=it){
-    //         while (j < n2){
-    //             if(b[j]<=it){
-    //                 j++;
-    //                 if (b[j]==it && visited[j]==0){
-    //                     v.push_back(it);
-    //                     break;
-    //                 }
-    //             }
+    // vector<int> ans;
+    // for (int i=0; i<n1; i++){
+    //     for (int j=0; j<n2; j++){
+    //         if (b[j]==a[i] && visited[j]==0){
+    //             ans.push_back(a[i]);
+    //             visited[j]=1;
+    //             break;
     //         }
-
-
+    //         if(b[j]>a[i]){
+    //             break;
+    //         }
     //     }
     // }
-  
 
-    
     //time : O(n1 x n2)
     //space : O(n2).....or you take that array in visited which has smaller length ...to optimize
+
+
+    //print
+    for (auto it: ans){
+        cout<<it <<" ";
+    }
 }
