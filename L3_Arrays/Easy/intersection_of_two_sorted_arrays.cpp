@@ -23,31 +23,59 @@ int main(){
         cin>>b[i];
     }
 
-    //OPTIMAL
-    //time: O(n1+n2)
-    //space : for solving =O(1) ; to return answer= O(k)....k is the intersection elements
-    vector <int> ans;
-
-    int i=0;
-    int j=0; 
-    while(i<n1 && j<n2){
-        if(a[i]<b[j]){
-            i++;
+    //BRUTE FORCE : UNIQUE INTERSECTION
+    vector<int> ans;
+    for (int i=0; i<n1; i++){
+        for (int j=0; j<n2; j++){
+            if (b[j]==a[i] ){
+                if(ans.size()==0){
+                    ans.push_back(a[i]);
+                    break;
+                }
+                else if(ans.back()!=a[i]){
+                    ans.push_back(a[i]);
+                    break;
+                }
+                
+            }
+            
         }
-        else if(b[j]<a[i]){
-            j++;
-        }
-        else{
-            ans.push_back(a[i]); //both are equal
-            i++;
-            j++;
-        }
-
     }
 
+    
 
 
-    //BRUTE FORCE
+
+
+
+    //OPTIMAL-NON UNIQUE INTERSECTION
+    //time: O(n1+n2)
+    //space : for solving =O(1) ; to return answer= O(k)....k is the intersection elements
+    // vector <int> ans;
+
+    // int i=0;
+    // int j=0; 
+    // while(i<n1 && j<n2){
+    //     if(a[i]<b[j]){
+    //         i++;
+    //     }
+    //     else if(b[j]<a[i]){
+    //         j++;
+    //     }
+    //     else{
+    //         ans.push_back(a[i]); //both are equal
+    //         i++;
+    //         j++;
+    //     }
+
+    // }
+
+
+
+
+
+
+    //BRUTE FORCE - NON UNIQUE INTERSECTION
     // int visited[n2]={0}; //not relaible ...some compilers may allow it
     // vector<int> visited(n2,0);//....all intialized to zeroes
 
