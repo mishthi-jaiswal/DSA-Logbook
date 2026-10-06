@@ -2,19 +2,19 @@
 using namespace std;
 
 
-//BETTER APPROACH
-// int missing_no(int a[], int n, int N){
-//     vector <int> hash(N+1,0);
-//     for (int i=0;i<n; i++){
-//         hash[a[i]]=1;
-//     }
-//     for (int i=1; i<=N; i++){
-//         if (hash[i]==0){
-//             return i;
-//         }
-//     }
-//     return-1;
-// }
+// BETTER APPROACH
+int missing_no(int a[], int n, int N){
+    vector <int> hash(N+1,0);
+    for (int i=0;i<n; i++){
+        hash[a[i]]=1;
+    }
+    for (int i=1; i<=N; i++){
+        if (hash[i]==0){
+            return i;
+        }
+    }
+    return-1;
+}
 
 
 //BRUTE FORCE time: O(N^2)
