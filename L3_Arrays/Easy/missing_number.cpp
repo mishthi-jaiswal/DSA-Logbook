@@ -2,22 +2,34 @@
 using namespace std;
 
 
-// BETTER APPROACH
+//OPTIMAL Approach : WAY1 -sum, time: O(n) , space: O(1)
 int missing_no(int a[], int n, int N){
-    vector <int> hash(N+1,0);
-    for (int i=0;i<n; i++){
-        hash[a[i]]=1;
+    int total_sum =N*(N+1)/2;
+    int arr_sum=0;
+    for (int i=0; i<n; i++){
+        arr_sum+=a[i];
     }
-    for (int i=1; i<=N; i++){
-        if (hash[i]==0){
-            return i;
-        }
-    }
-    return-1;
+    return total_sum-arr_sum;
+
 }
 
 
-//BRUTE FORCE time: O(N^2)
+// BETTER APPROACH    time : O(2n) , space : O(N)
+// int missing_no(int a[], int n, int N){
+//     vector <int> hash(N+1,0);
+//     for (int i=0;i<n; i++){
+//         hash[a[i]]=1;
+//     }
+//     for (int i=1; i<=N; i++){
+//         if (hash[i]==0){
+//             return i;
+//         }
+//     }
+//     return-1;
+// }
+
+
+//BRUTE FORCE time: O(N^2) , space : O(1)
 // int missing_no(int a[],int n, int N){
     
 //     for (int i=1; i<=N; i++){
