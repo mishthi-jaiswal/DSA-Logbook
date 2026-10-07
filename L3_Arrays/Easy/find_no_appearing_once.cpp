@@ -46,22 +46,31 @@ using namespace std;
 //Better approach 2: using map 
 //time: O(nlog((n+1)/2) +O((n+1)/2)--------- space :O((n+1)/2)
 //***works with negative number as well
+// int num_once(int a[], int n){
+//     unordered_map <long long, int> m;
+//     for(int i=0; i<n;i++){
+//         m[a[i]]++;
+//     }
+
+//     for (auto it : m){
+//         if (it.second==1){
+//             return it.first;
+//         }
+//     }
+
+//     return -1;
+// }
+
+
+
+//OPTIMAL : Using XOR
 int num_once(int a[], int n){
-    unordered_map <long long, int> m;
-    for(int i=0; i<n;i++){
-        m[a[i]]++;
+    int XOR=0;
+    for (int i=0; i<n; i++){
+        XOR=XOR^a[i];
     }
-
-    for (auto it : m){
-        if (it.second==1){
-            return it.first;
-        }
-    }
-
-    return -1;
+    return XOR;
 }
-
-
 
 int main(){
     int n;
