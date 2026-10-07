@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+//Brute force : using linear search----time:O(n^2), space:O(1)
+int num_once(int a[], int n){
+    for (int i =0; i<n;i++){
+        int num=a[i];
+        //find the count of that num
+        int count=0;
+        for (int j=0; j<n;j++){
+            if(a[j]==num){
+                count++;
+            }
+        }
+        if (count==1){
+            return num;
+            break;
+        }
+    }
+    return -1;
+}
+
+int main(){
+    int n;
+    cout<<"Enter the no of elements in array :";
+    cin>>n;
+
+    cout<<"Enter the array elements :";
+    int a[n];
+    for(int i=0; i<n; i++){
+        cin>>a[i];
+    }
+
+    cout<<num_once(a,n);
+
+    return 0;
+}
