@@ -38,28 +38,51 @@ using namespace std;
 
 
 //another SOLUTION - thought by me .....but its NOT IN PLACE
+//Tried to use two pointer approach
 //timr:O(2n) , space:O(n)
-vector<int> sort012(vector<int> & a){
-    int n=a.size();
-    int i=0;
-    int j=n-1;
-    vector<int> ans(n);
-    for (int k=0; k<n;k++){
-        if(a[k]==0){
-            ans[i]=0;
-            i++;
-        } 
-        else if(a[k]==2){
-            ans[j]=2;
-            j--;
+// vector<int> sort012(vector<int> & a){
+//     int n=a.size();
+//     int i=0;
+//     int j=n-1;
+//     vector<int> ans(n);
+//     for (int k=0; k<n;k++){
+//         if(a[k]==0){
+//             ans[i]=0;
+//             i++;
+//         } 
+//         else if(a[k]==2){
+//             ans[j]=2;
+//             j--;
+//         }
+//     }
+
+//     for(int k=i;k<=j;k++){
+//         ans[k]=1;
+//     }
+
+//     return ans;
+// }
+
+
+//OPTIMAL SOLN : T:O(n), S:O(1)----DUTCH NATIONAL FLAG ALGO
+void sort012(vector<int>& a){
+    int n= a.size();
+    int low=0, mid=0, high=n-1;
+
+    while(mid<=high){
+        if(a[mid]==0){
+            swap(a[mid], a[low]);
+            low++;
+            mid++;
+        }
+        else if(a[mid]==1){
+            mid++;
+        }
+        else{
+            swap(a[mid], a[high]);
+            high--;
         }
     }
-
-    for(int k=i;k<=j;k++){
-        ans[k]=1;
-    }
-
-    return ans;
 }
 
 int main(){
@@ -73,10 +96,10 @@ int main(){
         cin>>a[i];
     }
 
-    vector<int> ans=sort012(a);
+    sort012(a);
 
     //print array
-    for(auto it: ans){
+    for(auto it: a){
         cout<<it<<" ";
     }
     return 0;
