@@ -21,19 +21,45 @@ using namespace std;
 
 //Better solution : Strivers approach which is similar to my 1st thought but the code is SIMPLER
 //T:O(2n), S:O(1)
-void sort012(vector<int>& a){
+// void sort012(vector<int>& a){
+//     int n=a.size();
+//     int c0=0, c1=0, c2=0;
+//     for(int i=0; i<n;i++){
+//         if(a[i]==0) c0++;
+//         else if(a[i]==1) c1++;
+//         else c2++;
+//     }
+
+//     for (int i=0; i<c0; i++) a[i]=0;
+//     for (int i=c0; i<c0+c1; i++) a[i]=1;
+//     for (int i=c0+c1; i<n; i++) a[i]=2;
+
+// }
+
+
+//another SOLUTION - thought by me .....but its NOT IN PLACE
+//timr:O(2n) , space:O(n)
+vector<int> sort012(vector<int> & a){
     int n=a.size();
-    int c0=0, c1=0, c2=0;
-    for(int i=0; i<n;i++){
-        if(a[i]==0) c0++;
-        else if(a[i]==1) c1++;
-        else c2++;
+    int i=0;
+    int j=n-1;
+    vector<int> ans(n);
+    for (int k=0; k<n;k++){
+        if(a[k]==0){
+            ans[i]=0;
+            i++;
+        } 
+        else if(a[k]==2){
+            ans[j]=2;
+            j--;
+        }
     }
 
-    for (int i=0; i<c0; i++) a[i]=0;
-    for (int i=c0; i<c0+c1; i++) a[i]=1;
-    for (int i=c0+c1; i<n; i++) a[i]=2;
+    for(int k=i;k<=j;k++){
+        ans[k]=1;
+    }
 
+    return ans;
 }
 
 int main(){
@@ -47,10 +73,10 @@ int main(){
         cin>>a[i];
     }
 
-    sort012(a);
+    vector<int> ans=sort012(a);
 
     //print array
-    for(auto it: a){
+    for(auto it: ans){
         cout<<it<<" ";
     }
     return 0;
