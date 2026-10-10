@@ -2,24 +2,37 @@
 using namespace std;
 
 
-//MY first thought : T: O(n) ,Space :O(1)-----in place sorting
+//MY first thought : T: O(2n) ,Space :O(1)-----in place sorting
+// void sort012(vector<int>& a){
+//     int h_array[3]={0};
+//     for(int i=0; i<a.size();i++){
+//         h_array[a[i]]++;
+//     }
+
+//     int j=0;
+//     for (int i=0; i<3; i++){
+//         int count=h_array[i];
+//         while(count>0){
+//             a[j]=i;
+//             count--;
+//             j++;
+//         }
+//     }
+
+//Better solution : Strivers approach which is similar to my 1st thought but the code is SIMPLER
+//T:O(2n), S:O(1)
 void sort012(vector<int>& a){
-    int h_array[3]={0};
-    for(int i=0; i<a.size();i++){
-        h_array[a[i]]++;
+    int n=a.size();
+    int c0=0, c1=0, c2=0;
+    for(int i=0; i<n;i++){
+        if(a[i]==0) c0++;
+        else if(a[i]==1) c1++;
+        else c2++;
     }
 
-    int j=0;
-    for (int i=0; i<3; i++){
-        int count=h_array[i];
-        while(count>0){
-            a[j]=i;
-            count--;
-            j++;
-        }
-    }
-
-
+    for (int i=0; i<c0; i++) a[i]=0;
+    for (int i=c0; i<c0+c1; i++) a[i]=1;
+    for (int i=c0+c1; i<n; i++) a[i]=2;
 
 }
 
