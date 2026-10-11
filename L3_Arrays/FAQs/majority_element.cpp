@@ -18,21 +18,56 @@ using namespace std;
 
 //BETTER SOLUTION: using hashing (map)
 //T:O(nlogn + n) , S: O(n)(happens when array contains all unique elements)
-int majority_element(vector<int>& a){
-    int n=a.size();
+// int majority_element(vector<int>& a){
+//     int n=a.size();
 
-    map<int, int> mpp;
-    for(int i=0; i<n; i++){
-        mpp[a[i]]++;
-    }
+//     map<int, int> mpp;
+//     for(int i=0; i<n; i++){
+//         mpp[a[i]]++;
+//     }
 
-    for (auto it: mpp){
-        if (it.second>(n/2)){
-            return it.first;
+//     for (auto it: mpp){
+//         if (it.second>(n/2)){
+//             return it.first;
+//         }
+//     }
+//     return -1;
+// }
+
+
+//OPTIMAL SOLN---MOORE'S VOTING ALGO
+//T:O(n),S:O(1)
+int majority_element(vector<int> & a){
+    int n= a.size();
+    int count=0;
+    int element;
+    for(int i=0; i<n;i++){
+        if (count==0){
+            element=a[i];
+            count++;
+        }
+        else if(a[i]==element){
+            count++;
+        }
+        else{
+            count--;
         }
     }
+
+    //assuming that majority element always exists
+    //(so we dont check whether the final count was non zero or not .....because according to the assumption we will always have a non zero final count)
+
+    int actual_count=0;
+    for(int i=0; i<n; i++){
+        if (a[i]==element){
+            actual_count++;
+        }
+    }
+    if(actual_count>(n/2)) return element;
     return -1;
 }
+
+
 
 int main(){
     int n;
