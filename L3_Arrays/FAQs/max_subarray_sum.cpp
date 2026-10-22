@@ -78,19 +78,50 @@ using namespace std;
 
 //OPTIMAL SOLN -----UPGRADED Question 1-----T:O(n), S:O(1)
 //2) include empty array as well , so if sum is -ve then maxi=0 (empty array)....you can never have maxi<0
-int max_sub_sum(vector<int> &a){
+// int max_sub_sum(vector<int> &a){
+//     int n=a.size();
+//     int maxi=INT_MIN;
+//     int s=0;
+    
+//     for(int i=0;i<n;i++){
+//         s+=a[i];
+//         if(s>maxi) maxi=s; 
+//         if(s<0) s=0; 
+//     }
+//     if (maxi<0) maxi=0;
+//     return maxi;
+// }
+
+
+
+//OPTIMAL SOLN -----UPGRADED Question 2-----T:O(n), S:O(1)
+//1)give that maximum subarray also
+vector<int> max_sub_sum(vector<int> &a){
     int n=a.size();
+
     int maxi=INT_MIN;
     int s=0;
+    int start=-1;
+    int astart=-1;
+    int astop=-1;
+
+    for(int i=0;i<n; i++){
+        if (s==0) start=i;
+        s+=a[i]; //same
+
+        if(s>maxi){
+            maxi=s;//same
+            astop=i;
+            astart=start;
+        }
     
-    for(int i=0;i<n;i++){
-        s+=a[i];
-        if(s>maxi) maxi=s; 
-        if(s<0) s=0;  //because negative sum is not contributing anything
+        if(s<0) s=0; //same
+        
     }
-    if (maxi<0) maxi=0;
-    return maxi;
+
+    return {maxi,astart,astop};
 }
+
 
 
 
@@ -107,7 +138,13 @@ int main(){
     }
 
 
-    cout<<max_sub_sum(a);
+    vector<int> ans=max_sub_sum(a);
+    cout<<"Max Sum:"<<ans[0]<<endl;
+
+    cout<<"Max Subarray :";
+    for(int i=ans[1];i<=ans[2]; i++){
+        cout<<a[i]<<" ";
+    }
     
 
     return 0;
