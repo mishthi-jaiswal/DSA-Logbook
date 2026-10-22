@@ -17,18 +17,32 @@ using namespace std;
 // }
 
 
-//BRTE FORCE- STRIVER
+//BRUTE FORCE- STRIVER
 //t: O(n^3)  s: O(1)
-int max_sub_sum(vector<int> & a){
-    int maxi=INT_MIN;
-    int n=a.size();
-    for (int i=0; i<n;i++){
+// int max_sub_sum(vector<int> & a){
+//     int maxi=INT_MIN;
+//     int n=a.size();
+//     for (int i=0; i<n;i++){
 
+//         for(int j=i; j<n;j++){
+//             int s=0;
+//             for(int k=i; k<=j; k++){
+//                 s+=a[k];
+//             }
+//             maxi=max(maxi,s);
+//         }
+//     }
+//     return maxi;
+// }
+
+//BETTER - t=O(n^2) , s=O(1)
+int max_sub_sum(vector<int> & a){
+    int n= a.size();
+    int maxi=INT_MIN;
+    for(int i=0; i<n; i++){
+        int s=0;
         for(int j=i; j<n;j++){
-            int s=0;
-            for(int k=i; k<=j; k++){
-                s+=a[k];
-            }
+            s+=a[j];
             maxi=max(maxi,s);
         }
     }
