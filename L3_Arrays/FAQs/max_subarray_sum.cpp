@@ -36,18 +36,37 @@ using namespace std;
 // }
 
 //BETTER - t=O(n^2) , s=O(1)
-int max_sub_sum(vector<int> & a){
-    int n= a.size();
+// int max_sub_sum(vector<int> & a){
+//     int n= a.size();
+//     int maxi=INT_MIN;
+//     for(int i=0; i<n; i++){
+//         int s=0;
+//         for(int j=i; j<n;j++){
+//             s+=a[j];
+//             maxi=max(maxi,s);
+//         }
+//     }
+//     return maxi;
+// }
+
+//OPTIMAL SOLN: NORMAL question  where yo just need to return maximum sum
+//T: O(N) , S: O(1)
+int max_sub_sum(vector<int> &a){
+    int n=a.size();
     int maxi=INT_MIN;
-    for(int i=0; i<n; i++){
-        int s=0;
-        for(int j=i; j<n;j++){
-            s+=a[j];
-            maxi=max(maxi,s);
-        }
+    int s=0;
+    
+    for(int i=0;i<n;i++){
+        s+=a[i];
+        if(s>maxi) maxi=s;
+        if(s<0) s=0;
     }
+
     return maxi;
 }
+
+
+
 
 
 int main(){
