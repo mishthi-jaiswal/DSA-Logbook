@@ -17,6 +17,7 @@ using namespace std;
 // }
 
 
+
 //BRUTE FORCE- STRIVER
 //t: O(n^3)  s: O(1)
 // int max_sub_sum(vector<int> & a){
@@ -35,6 +36,8 @@ using namespace std;
 //     return maxi;
 // }
 
+
+
 //BETTER - t=O(n^2) , s=O(1)
 // int max_sub_sum(vector<int> & a){
 //     int n= a.size();
@@ -49,8 +52,32 @@ using namespace std;
 //     return maxi;
 // }
 
+
+
+
 //OPTIMAL SOLN: NORMAL question  where yo just need to return maximum sum
+//Kadane's algo
 //T: O(N) , S: O(1)
+// int max_sub_sum(vector<int> &a){
+//     int n=a.size();
+//     int maxi=INT_MIN;
+//     int s=0;
+    
+//     for(int i=0;i<n;i++){
+//         s+=a[i];
+//         if(s>maxi) maxi=s; 
+//         if(s<0) s=0;  //because negative sum is not contributing anything
+//     }
+
+//     return maxi;
+// }
+
+
+
+
+
+//OPTIMAL SOLN -----UPGRADED Question 1-----T:O(n), S:O(1)
+//2) include empty array as well , so if sum is -ve then maxi=0 (empty array)....you can never have maxi<0
 int max_sub_sum(vector<int> &a){
     int n=a.size();
     int maxi=INT_MIN;
@@ -58,13 +85,12 @@ int max_sub_sum(vector<int> &a){
     
     for(int i=0;i<n;i++){
         s+=a[i];
-        if(s>maxi) maxi=s;
-        if(s<0) s=0;
+        if(s>maxi) maxi=s; 
+        if(s<0) s=0;  //because negative sum is not contributing anything
     }
-
+    if (maxi<0) maxi=0;
     return maxi;
 }
-
 
 
 
@@ -80,7 +106,9 @@ int main(){
         cin>>a[i];
     }
 
+
     cout<<max_sub_sum(a);
+    
 
     return 0;
 }
