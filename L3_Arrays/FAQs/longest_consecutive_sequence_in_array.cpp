@@ -63,27 +63,53 @@ using namespace std;
 
 
 //Better soln: T: O(nlogn), S:O(log n) due to recursion stack used by the sort()
-int longest_consecutive_seq(vector<int> & a){
-    sort(a.begin(),a.end()); //O(nlog n)
-    int n=a.size();
+// int longest_consecutive_seq(vector<int> & a){
+//     sort(a.begin(),a.end()); //O(nlog n)
+//     int n=a.size();
 
-    int last_smaller=INT_MIN;
-    int longest=0;
+//     int last_smaller=INT_MIN;
+//     int longest=0;
+//     int count=0;
+
+//     for(int i=0; i<n;i++){ //O(n)
+       
+//         if(a[i]==last_smaller+1){
+//             last_smaller=a[i];
+//             count++;
+//         }
+//         else if (a[i]!=last_smaller){
+//             last_smaller=a[i];
+//             count=1;
+//         }
+//         longest=max(longest, count);
+//     }
+//     return longest; 
+// }
+
+
+
+
+//OPTIMAL SOLN under some constraints
+//T:O(3n), S:O(n)------assuming the unordered set takes avg case O(1) in most of the cases
+int longest_consecutive_seq(vector<int> & a){
+    int n= a.size();
+    int longest=0; //if the array is empty
     int count=0;
 
-    for(int i=0; i<n;i++){ //O(n)
-       
-        if(a[i]==last_smaller+1){
-            last_smaller=a[i];
-            count++;
-        }
-        else if (a[i]!=last_smaller){
-            last_smaller=a[i];
+    unordered_set<int> s(a.begin(),a.end());//O(1) for 1 insertion ....so for n elements O(n)
+    for(auto it : s){
+        if(s.find(it-1)==s.end()){
+            int search=it;
             count=1;
+            while(s.find(search+1)!=s.end()){
+                count++;
+                search++;
+            }
+            longest=max(longest,count);
         }
-        longest=max(longest, count);
     }
-    return longest; 
+    return longest;
+
 }
 
 int main(){
