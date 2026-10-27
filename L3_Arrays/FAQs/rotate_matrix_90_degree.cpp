@@ -9,17 +9,36 @@ using namespace std;
 //this rotates the matrix anti- clockwise but the question has asked the clockwise
 //but it still produces the required output
 //T: O(n^2), S:O(1)
+// void rotate_matrix(vector<vector<int>>& a){
+//         int r=a.size();
+//         int c=a[0].size();
+
+//         //reverse each column's elements;
+//         for (int j=0; j<c;j++){
+//             for(int i=0; i<r/2; i++){
+//                 swap(a[i][j],a[r-i-1][j]);
+//             }
+//         }  
+        
+//         //transpose the matrix
+//         for(int i=0; i<r;i++){
+//             for(int j=0; j<c;j++){
+//                 if(i<j){
+//                     swap(a[i][j],a[j][i]);
+//                 }
+//             }
+//         }
+
+// }
+
+
+//CORRECT OPTIMAL SOLUTION
+//rotate clockwise( first transpose, second reverse each row's elements)
+//T:O(n^2), S:O(1)
 void rotate_matrix(vector<vector<int>>& a){
         int r=a.size();
         int c=a[0].size();
 
-        //reverse each column's elements;
-        for (int j=0; j<c;j++){
-            for(int i=0; i<r/2; i++){
-                swap(a[i][j],a[r-i-1][j]);
-            }
-        }  
-        
         //transpose the matrix
         for(int i=0; i<r;i++){
             for(int j=0; j<c;j++){
@@ -29,6 +48,13 @@ void rotate_matrix(vector<vector<int>>& a){
             }
         }
 
+        //reverse each row's elements;
+        for (int i=0; i<r;i++){
+            for(int j=0; j<c/2; j++){
+                swap(a[i][j],a[i][c-j-1]);
+            }
+        } 
+
 }
 
 
@@ -36,6 +62,7 @@ void rotate_matrix(vector<vector<int>>& a){
 
 
 int main(){
+    //PROBLEM: rotate nxn matrix by 90 degree clockwise
     int r,c;
     cout<<"Enter no of rows:";
     cin>>r;
