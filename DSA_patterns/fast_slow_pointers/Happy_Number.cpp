@@ -1,34 +1,64 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int sos(int n){
-    int s=0;
-    while (n>0){
+
+
+//Brute force
+// int sos(int n){
+//     int s=0;
+//     while (n>0){
+//         int digit=n%10;
+//         s+=(digit*digit);
+//         n=n/10;
+//     }
+//     return s;
+// }
+
+// unordered_set<int> v;
+// bool isHappy(int n) {
+    
+//     if(n<=0){
+//         return false;
+//     }
+//     if(n==1){
+//         return true;
+//     }
+
+//     v.insert(n);
+//     int next=sos(n);
+//     if(v.find(next)!=v.end()){
+//         return false;
+//     }
+
+//     return isHappy(next);
+    
+// }
+
+
+
+//OPTIMAL
+int squareDigits(int n){
+    int sos=0;
+
+    while(n>0){
         int digit=n%10;
-        s+=(digit*digit);
+        sos+=digit*digit;
         n=n/10;
     }
-    return s;
+    return sos;
 }
 
-unordered_set<int> v;
-bool isHappy(int n) {
-    
-    if(n<=0){
-        return false;
-    }
-    if(n==1){
-        return true;
-    }
+bool isHappy(int n){
 
-    v.insert(n);
-    int next=sos(n);
-    if(v.find(next)!=v.end()){
-        return false;
-    }
+    int slow=n;
+    int fast=n;
 
-    return isHappy(next);
-    
+    do{
+        slow=squareDigits(slow);
+        fast=squareDigits(squareDigits(fast));
+        
+    }while(slow!=fast);
+    return slow==1;
 }
 
 
