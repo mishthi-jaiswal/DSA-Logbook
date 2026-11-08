@@ -13,33 +13,50 @@ struct Node{
 
 
 //BRUTE FORCE
-Node* reverseList(Node* head) {
+// Node* reverseList(Node* head) {
     
-    vector<int> v;
-    Node* temp=head;
+//     vector<int> v;
+//     Node* temp=head;
 
-    while(temp!=nullptr){
-        v.push_back(temp->val);
-        temp=temp->next;
+//     while(temp!=nullptr){
+//         v.push_back(temp->val);
+//         temp=temp->next;
+//     }
+
+//     int i=0;
+//     int j=v.size()-1;
+//     while(i<j){
+//         swap(v[i],v[j]);
+//         i++;
+//         j--;
+//     }
+
+//     temp=head;
+//     i=0;
+//     while(temp!=nullptr){
+//         temp->val=v[i];
+//         temp=temp->next;
+//         i++;
+//     }
+
+//     return head;
+// }
+
+
+
+//optimal
+Node* reverseList(Node* head){
+    Node* prev=nullptr;
+    Node* curr=head;
+
+    while(curr!=nullptr){
+        Node* temp=curr->next;
+        curr->next=prev;
+
+        prev=curr;
+        curr=temp;
     }
-
-    int i=0;
-    int j=v.size()-1;
-    while(i<j){
-        swap(v[i],v[j]);
-        i++;
-        j--;
-    }
-
-    temp=head;
-    i=0;
-    while(temp!=nullptr){
-        temp->val=v[i];
-        temp=temp->next;
-        i++;
-    }
-
-    return head;
+    return prev;
 }
 
 int main(){
@@ -59,10 +76,9 @@ int main(){
     fifth->next=sixth;
     sixth->next=seventh;
 
-    reverseList(head);
 
     //print the linked list
-    Node* temp=head;
+    Node* temp=reverseList(head);
     while(temp!=nullptr){
         cout<<temp->val<<" ";
         temp=temp->next;
