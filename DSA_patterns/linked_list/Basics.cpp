@@ -74,13 +74,13 @@ class List{
     }
 
     void pop_front(){
-        //if empty list
+        //case 1 : 0 node
         if(head==nullptr){
             cout<<"Underflow! List is empty";
             return;
         }
         
-        //if list not empty
+        //case 2: non 0 nodes
         Node* temp=head;
         head=head->next;
         temp->next=nullptr;//not necessary to write
@@ -90,6 +90,33 @@ class List{
         if(head==nullptr){
             tail=nullptr;
         }
+
+    }
+
+    void pop_back(){
+        //case 1: 0 node
+        if(head==nullptr){
+            cout<<"Underflow! List is empty";
+            return ;
+        }
+
+        //case 2: 1 node
+        if(head==tail){
+            delete head;
+            head=tail=nullptr;
+            return;
+
+        }
+
+        // casse 3: multiple nodes
+        Node* temp=head;
+        while(temp->next!=tail){  //temp->next->next!=nullptr ----if tail property doesnt exist
+            temp=temp->next;
+        }
+
+        delete tail;
+        tail=temp;
+        tail->next=nullptr;
 
     }
 
@@ -104,6 +131,7 @@ int main(){
     ll.print();
 
     ll.pop_front();
+    ll.pop_back();
     ll.print();
     return 0;
 }
