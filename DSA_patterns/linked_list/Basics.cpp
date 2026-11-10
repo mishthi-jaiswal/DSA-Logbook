@@ -120,18 +120,60 @@ class List{
 
     }
 
+    void insert_position(int val, int pos){ //0- based indexing
+        //case1:
+        if(pos<0){
+            cout<<"Invalid Position"<<endl;
+            return;
+        }
+
+        //case2 :at beginning
+        if(pos==0){
+            push_front(val);
+            return;
+        }
+
+//case 3 ; handles all other cases (including insertion at the end)
+        Node* temp=head;
+        for(int i=0; i<pos-1 && temp!=nullptr; i++){
+            temp=temp->next;
+        }
+
+        //case 4: if position is out of end bounds
+        if(temp==nullptr){
+            cout<<"Invalid Position"<<endl;
+            return;
+        }
+
+        //otherwise noramlly insert
+        Node* newNode= new Node(val);
+        newNode->next=temp->next;
+        temp->next=newNode;
+
+        //case 5: if insertion was made at end 
+        if(temp==tail){
+            tail =newNode;
+        }
+    }
+
 };
 
 int main(){
     List ll;
-    ll.push_front(1);
-    ll.push_front(2);
+    ll.push_front(5);
+    ll.push_front(4);
     ll.push_front(3);
+    ll.push_front(2);
+    ll.push_front(1);
+    ll.push_front(500);
     ll.push_back(100);
     ll.print();
 
     ll.pop_front();
     ll.pop_back();
+    ll.print();
+
+    ll.insert_position(400,4);
     ll.print();
     return 0;
 }
