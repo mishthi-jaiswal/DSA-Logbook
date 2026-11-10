@@ -47,7 +47,7 @@ class List{
             cout<<temp->val<<"->";
             temp=temp->next;
         }
-        cout<<"null";
+        cout<<"null"<<endl;
     }
 
     void push_back(int val){
@@ -73,6 +73,26 @@ class List{
         // tail=newNode;
     }
 
+    void pop_front(){
+        //if empty list
+        if(head==nullptr){
+            cout<<"Underflow! List is empty";
+            return;
+        }
+        
+        //if list not empty
+        Node* temp=head;
+        head=head->next;
+        temp->next=nullptr;//not necessary to write
+        delete temp;
+
+        //suppose list LENGHT is 1 ....after popping no element remains
+        if(head==nullptr){
+            tail=nullptr;
+        }
+
+    }
+
 };
 
 int main(){
@@ -81,6 +101,9 @@ int main(){
     ll.push_front(2);
     ll.push_front(3);
     ll.push_back(100);
+    ll.print();
+
+    ll.pop_front();
     ll.print();
     return 0;
 }
