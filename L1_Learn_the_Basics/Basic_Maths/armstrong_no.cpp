@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//T:O(d^2) ...wherre d is no of digits
+
 int main(){
     int n;
     cout<<"Enter the no :";
