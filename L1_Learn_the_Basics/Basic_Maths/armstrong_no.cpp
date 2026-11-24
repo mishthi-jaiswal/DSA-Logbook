@@ -7,13 +7,12 @@ int main(){
     cin>>n;
     int temp=n;
     int count=0;
-    if (n==0) count=1;
-    else{
-        while(temp>0){
-        count++;
-        temp=temp/10;
-        }
+    
+    while(temp>0){
+    count++;
+    temp=temp/10;
     }
+    
 
     int temp2=n;
     int digit;
