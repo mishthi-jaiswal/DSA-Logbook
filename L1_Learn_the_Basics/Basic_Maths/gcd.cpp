@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//T: O(log(min(a,b)))
 int main(){
     int a,b;
     cout<<"Enter the numbers separated by space :";
